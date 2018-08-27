@@ -1,0 +1,652 @@
+//PATRON DE COLORES
+$texto:#111111;
+$principal:#12AFAF;
+$secundario:#009500;
+
+/*-----------------------------------------
+CONTEXTO MOVIL
+-----------------------------------------*/
+
+html{
+    font-size: 15px;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    color: $texto;
+}
+
+//fondo  slider clase bienvenido
+.bienvenidos{
+    background: url("../images/fondo1.JPG") no-repeat center top;
+    color: #fff;
+    background-size: cover;//agarnda la imagen al 100% del ancho de la pantalla
+    background-attachment: fixed !important;//efecto parallax(q no se mueva la img de fondo) al desplazarse sobre abajo
+    height: 100vh;//vh(viewport height) viewport(todo lo q se ve en la pantalla) height(el % de la altura del dispositivo) en este caso le estamos diciendo q se vea el 100% de la altura del dispositivo
+    display: flex;//para q se use flexbox
+    flex-direction: column;//direccion=columna
+}
+//estilo para el header clase encabezado
+.encabezado{
+    background: $texto;
+    color: #fff;
+    padding: .5rem 0;
+    transition: all .5s ease;
+}
+//estilo para el color del header clase encabezado al hacer scroll(cod definido en animSitio.js)
+.encabezado.fondo-menu{
+    background:#064e4e ;
+    padding: 1rem 0;
+}
+
+.encabezado .container{
+    display: flex; //se coloque en fila los elementos q estan dentro de container
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+//definiendo estilos para el logo
+.encabezado .logo img{
+    width: 150px;//ancho
+    height: auto;//alto
+}
+
+//estilo para el boton buscar y menu
+.boton-buscar, .boton-menu{
+    border: 0;//no-border
+    font-size: 2rem; //tamaño de letra x dos 
+    margin: 0;
+    padding: 0 .5rem;
+    background: transparent;
+    color: #fff;
+}
+
+//al estar en el foco el boton
+.boton-buscar:focus, .boton-menu:focus{
+    outline: 0;
+}
+
+.boton-buscar{
+    margin-left: auto;
+    margin-right: .8rem;
+}
+
+
+//estilos bloque form buscar
+#bloque-buscar{
+    flex: 1 1 100%;
+}
+
+//estilos para el form buscar q contiene el text y button
+.contenedor-bloque-buscar{
+    display: flex;
+    height: 3rem;
+    margin: 1rem 0;
+}
+
+//estilos para la caja buscar
+.contenedor-bloque-buscar input[type="text"]{
+    border: 0;
+    border-radius: 5px 0 0 5px;
+    padding: 1rem;
+    flex: 1 1 auto;
+}
+
+//estilos para el boton buscar
+.contenedor-bloque-buscar input[type="submit"]{
+    flex: 1 1 auto;//q cresca(1=si) q se redusca(1=si)  y q sea responsive
+    border: 0;//quitamos el border x default
+    border-radius: 0 5px 5px 0;
+    background: $principal;
+    color: #fff;
+    flex: 0 1 auto;//nunca cresca cuando cambie el tamaño d la pantalla
+    padding: 0 1rem;
+}
+//estilos para el menu
+#menu-principal{
+    flex: 1 1 100%;//q ocupe un 100% del contenedor padre
+}
+//estilos para el ul
+#menu-principal ul{
+    padding: 0;
+    list-style: none;//quita los puntitos del ul
+    margin: 1rem 0 0 0;
+    
+}
+
+//estilos para los enlaces del menu
+#menu-principal ul a{
+    display: block;//cada elemento sea un bloque (q ocupe el 100% de ancho)
+    padding: .5rem 0;//espacio top y bottom de .5rem y rigth y left 0
+    text-align: center;//el texto se centre
+    color: #fff;
+    text-transform: uppercase;//poner a mayusc.
+    border-top: 1px solid #8c8888;//borde  arriba 
+    text-decoration: none;//quita el borde
+}
+// cuando el usuario pasa el mouse x encima del enlace
+#menu-principal ul a:hover, 
+#menu-principal ul li.active a{
+    color:$principal;
+}
+
+//cambiando el estilo de la clase bootstrap btn-primary
+.btn-primary{
+    color: #fff;
+    background: $principal;
+    border-color: transparent;
+    transition: all .5s ease;
+}
+//cambiando el estilo de la clase bootstrap btn-primary los eventos focus, hover, active:hover
+.btn-primary:hover,
+.btn-primary:focus
+.btn-primary:active:hover
+{
+    background: $secundario;
+    border-color: transparent;
+}
+//estilo para el texto del slider
+.texto-encabezado .display-4{
+    margin-top: 3rem;
+}
+//estilo para la clase texto-encabezado(contiene h1,p y button)
+.texto-encabezado{
+    text-align: center;
+    //estas 3 lineas centran todo este contenido 
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;//centra el contenido en el medio(h1,p y button)
+}
+
+.texto-encabezado .btn-primary{
+    margin-top: 1rem;
+}
+
+//estilo para la flechita bajar
+.flecha-bajar a{
+    display: inline-block;
+    color: #fff;
+    font-size: 4rem;//tamaño de la flecha o enlace
+    //aqui llamaremos a mi animacion
+    //animation:nombre_animacion duracion(2s) aceleracion_de_la_animacion(ease..) para q nunca pare(infinite)
+    animation: flecha-animada 2s ease-in-out infinite;
+}
+
+//creando animacion para la flecha para q siempre se este moviendo 
+//flecha-animada<- nombre de la animacion
+//translateY<- indica q se va a mover de manera vertical(para abajo )
+@keyframes flecha-animada{
+    from{
+        transform: translateY(0);//from<-indicando la posicion inicial =0 
+    }
+    //50% < - a la mitad d la animacion
+    50%{
+        transform: translateY(6px);//baje unos 6px
+    }
+    to{
+        transform: translateY(0);//to<-(cuando acabe la animacion) regrese al comienzo->(0)
+    }
+}
+
+/*--------------------------
+seccion La Agencia
+--------------------------*/
+.agencia{
+    background: $principal;
+    color: #fff;
+}
+
+//estilo para la img agencia
+.agencia img{
+    width: 70%;//ancho
+    margin: 0 auto;//centrado
+    display: block;//ocupe una fila
+    
+}
+
+/*----------------------------
+SECCION TU MEJOR ELECCION
+-----------------------------*/
+.tu-mejor-eleccion h2 span{
+    color:$principal;
+}
+
+.tu-mejor-eleccion ul,
+.tu-mejor-eleccion ul li{
+    list-style: none;//quita viñetas de los li
+}
+//clase fa de los iconos font-awesome
+.tu-mejor-eleccion ul li .fa{
+    background: $secundario;
+    font-size: 2.3rem;//tamaño de los iconos
+    width: 4.7rem;//ancho cont
+    height: 4.7rem;//alto cont
+    border-radius: 50%;//borderedondeados contenedor
+    line-height: 4.7rem;//centrando iconos
+    color: #fff;//color icono
+}
+//estilos h4
+.tu-mejor-eleccion .contenedor-eleccion h4{
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: .8rem;
+}
+//estilos para el tamaño de los li
+.tu-mejor-eleccion ul li{
+    min-height: 9rem;//tamaño minimo de altura de la etiqueta
+}
+
+/*-------------------------
+SECCION SERVICIOS
+---------------------------*/
+.servicios{
+    background: url("../images/fondo2.JPG") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed !important;
+    color: #fff;
+    background-size: cover;//la img se amplia al 100%
+}
+
+.servicios article{
+    display: flex;//se alinean los objetos(article) uno al costado del otro
+    align-items: center;
+    margin:1rem 0;    
+}
+
+.servicios img{
+    flex: 0 0 60px;
+    overflow: hidden;
+    margin-right: 1rem;
+}
+
+.servicios h3{
+    margin: 0;
+    font-size: 1.1rem;
+    flex: 1 1 auto;
+}
+.servicios h3 a{
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+}
+
+//pseudoelemento after para la flechita >
+.servicios h3 a::after{
+    content: "\f054";//agregando contenido al final de la etiqueta a(icono de la fuente fontawesome)
+    font-family: Fontawesome;
+    font-size: 2rem;
+    margin-right: 1rem;
+    opacity: .5;
+    position: relative;
+    left:0;
+    transition: all .4s ease;
+}
+
+.servicios h3 a:hover::after{
+    left:-.6rem;
+    color: $principal;
+    opacity: 1;
+}
+
+.btn-secondary{
+    background: #ffffff;
+    color: $texto;
+}
+
+/*------------------------
+SECCION ÚLTIMOS PROYECTOS
+-------------------------*/
+.ultimos-proyectos a{
+    text-decoration: none;
+}
+
+.ultimos-proyectos a h4{
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    color:$texto;
+}
+
+
+//quitando los paddings de container q está dentro de ult..
+.ultimos-proyectos .container{
+    padding:0;
+}
+
+//botones anterior siguiente
+.ultimos-proyectos .owl-nav{
+    display: flex;//los hijos se alinearan uno seguido del otro
+    justify-content: center;//centra en el eje horizontal
+    margin: .3rem 0;; //margen entre los iconos y la imagen de arriba
+}
+//estilo para los iconos anterior y sgte
+.ultimos-proyectos .owl-prev,
+.ultimos-proyectos .owl-next{
+    font-size: 3rem;//tamaño del icono
+    margin: 0 .5rem;//espacio entre los iconos
+    color: $principal;
+    transition: all .5s ease;
+}
+
+.ultimos-proyectos .owl-prev:hover,
+.ultimos-proyectos .owl-next:hover{
+    font-size: 3rem;//tamaño del icono
+    margin: 0 .5rem;//espacio entre los iconos
+    color: $secundario;
+}
+
+
+/*----------------------------------
+SECCION PIE DE PAGINA
+----------------------------------*/
+.pie-de-pagina{
+    background: $texto;
+    color:#fff;
+    text-align: center;
+    font-size: .9rem;
+}
+
+.pie-de-pagina .redes-sociales{
+    display: flex;//coloca los hijos uno al costado del otro(inline)
+    justify-content: center;//centra los hijos
+    list-style: none;//quitando viñetas
+    margin: 0;
+    padding: 0;    
+}
+//enlaces de las redes sociales
+.pie-de-pagina .redes-sociales a{
+    color: #fff;
+    font-size: 2rem;
+    margin: 0 .5rem;//margen entre los elementos a
+    opacity: .7;
+    transition: all .4s ease;
+}
+
+.pie-de-pagina .redes-sociales a:hover{
+    opacity: 1;
+}
+
+/*-------------------------
+SECCION FLECHA IR ARRIBA
+---------------------------*/
+.ir-arriba{
+    position: fixed;//siempre estara fija en la pantalla
+    bottom: 1rem;//espacio entre el icono y la parte inferior del body
+    right:1rem;//espacion con el lado derecho
+    font-size: 3rem;//tamaño
+    color: rgb(18,175,175);
+    text-decoration: none;
+    z-index: 999999;
+    line-height: 0;//quita espaciado innecesario 
+    display: none;//x defecto este oculto
+    transition: all .3s ease;
+}
+
+.ir-arriba:hover,
+.ir-arriba:focus{
+    outline: 0;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+/*-------------------------------------------
+estilos pagina NOSOTROS
+--------------------------------------------*/
+.paginas-internas .bienvenidos{
+    height:60vh;//sobreescribiendo la altura de la pag nosotros 
+}
+
+.paginas-internas .ruta{
+    background: $principal;
+    color: #fff;
+}
+
+.paginas-internas .ruta a{
+    color: #fff;
+    text-decoration: underline;
+}
+
+.paginas-internas .ruta a:hover{
+    text-decoration: none;
+}
+
+/*---------acordeon-----------*/
+.paginas-internas .card .card-heading{
+    font-size: 1.2rem;
+}
+
+.paginas-internas .card .card-heading a{
+    background: $principal;
+    color: #fff;
+    display: block;
+    padding: 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all .5s ease;
+}
+
+.paginas-internas .card .card-heading a:hover{
+    background: $secundario;
+    color: #fff;
+
+}
+
+/*-------------------------------------------
+estilos pagina SERVICIOS
+--------------------------------------------*/
+.paginas-internas .lista-servicios{
+    background: $secundario;
+}
+
+.paginas-internas .lista-servicios .item-servicios{
+    background: #fff;
+    text-align: center;
+    border: 5px solid #057705;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+//estilos para los iconos fot-awesome
+.paginas-internas .lista-servicios .item-servicios .fa{
+    font-size: 6rem;
+    color: $principal;
+    margin-bottom: 1rem;
+    transition: all 1s ease;
+}
+
+.paginas-internas .lista-servicios .item-servicios:hover .fa{
+    transform: rotateY(360deg);
+    transform-style: preserve-3d;
+}
+
+
+
+
+
+/*--------------------------------------
+EMPIEZA LAS MEDIAS QUERIES
+---------------------------------------*/
+//CONTEXTO TABLET (cuando el tamaño sea md)
+@media(min-width:768px){
+       
+    #menu-principal{
+        height: auto important;//important sobreescribe el css anterior
+        display: block;
+        flex:  0 1 auto;//
+        margin-left: auto;
+        order: 1;
+        //background: red;
+    }
+    
+    #menu-principal ul{
+        display: flex;//display:inline
+        margin: 0;
+        //background: green;
+    }
+    
+    #menu-principal ul li a{
+        padding: .8rem; 
+        text-transform: capitalize;//cambia el formato de texto la primera letra mayuscula resto minuscula
+        margin: 0 .3rem;
+        border-top: 0;
+        border-bottom: 4px solid transparent;//para evitar problemas con IExplorer
+        transition: all .5s ease;
+    }
+    
+    #menu-principal ul li.active a,
+    #menu-principal ul li a:hover{
+        color: $principal;
+        border-bottom: 4px solid;
+    }
+    
+    .boton-buscar{
+        margin-left: 1rem;
+        margin-right: 0;
+        order: 2;//sea el 2do elemento
+    }
+    
+    #bloque-buscar{
+        order: 3;//hace q el form de buscar se posicione como el 3er elemento
+        //cambiando el tamaño del form buscar
+        position: absolute;
+        width: 20rem;
+        right: 3rem;
+        top: 3.5rem; 
+        transition: all .5s ease;
+    }
+    
+    /*-------------------------
+    SECCION SERVICIOS
+    --------------------------*/
+    .servicios article{
+        margin: 1rem 0;
+        flex-direction: column;//coloca en columna los articles
+        align-items: center;
+        text-align: center;
+    }
+    
+    .servicios img{
+        flex: 0 0 160px;
+        overflow: hidden;
+        margin-right: 0;
+        margin-bottom: 1rem;
+        transition: all 1s ease;
+    }
+    //al pasar el mouse sobre los img
+    .servicios article:hover img:hover{
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+    }
+    //quitar flechitas
+    .servicios h3 a::after{
+        content: "";//poniendolo a vacio
+    }
+    //aumentando tamaño de los h3
+    .servicios h3{
+        margin: 0 0 .5rem 0;
+        font-size: 1.5rem;
+        flex: 0 1 auto;
+        height: 68px;
+    }
+    
+    .servicios .btn-secondary{
+        margin-top: auto;
+    }
+    
+    /*Pagina Servicios.html*/
+    .paginas-internas .lista-servicios .col-md-4{
+        display: flex;
+    }
+    .paginas-internas .lista-servicios .item-servicios{
+        display: flex;
+        flex-direction: column;
+    } 
+    .paginas-internas .lista-servicios .item-servicios .btn-primary{
+        margin-top: auto;
+    }
+    
+    
+}
+
+
+
+//CONTEXTO LAPTOP, PC (cuando el tamaño sea LG hasta XL)
+@media(min-width:992px){
+
+    html{
+        font-size: 16px;//el tamaño de todo el sitio web crezca 1px        
+    }
+    //haciendo q los elementos li se posicionen al costado de la img
+    .tu-mejor-eleccion ul li{
+        display: flex;
+        min-height: 7rem;
+    }
+    //dando estilo a los iconos q estan desalineados
+    .tu-mejor-eleccion ul li .fa{
+        text-align: center;
+        flex: 0 1 auto;
+        margin-right: 1rem;//espacio entre el <i> y .contenedor-eleccion
+        transition: all 1s ease;
+    }
+    
+    .tu-mejor-eleccion ul li:hover .fa{
+        //aplicando fectos a los iconos
+        transform: rotateY(360deg);
+        transform-style: preserve-3d;
+        background: $principal;
+    }
+    
+     
+        
+    .contenedor-eleccion{
+        flex: 1 0 0px;
+    }
+    //cambiando el tamaño de los h4 
+    .tu-mejor-eleccion ul li .contenedor-eleccion h4{
+        margin-top: 0;
+        font-size: 1rem;
+    }
+    //cambiando el orden del icono de clase .fa
+    .tu-mejor-eleccion ul:first-child .fa{
+        order: 1;
+        margin-left: 1rem;
+        margin-right: 0;
+        
+    }
+    
+    .tu-mejor-eleccion ul li p{
+        font-size: .85rem;
+    }
+    
+    
+    .servicios{
+        background: url("../images/fondo2-grande.jpg") no-repeat center center;
+        background-size: cover;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
